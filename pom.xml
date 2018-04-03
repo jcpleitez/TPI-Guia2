@@ -29,6 +29,15 @@
             <scope>test</scope>
         </dependency>
         
+        <!--Dependencia para remote lib-->
+        <dependency>
+            <groupId>sv.edu.ues.fmocc.ingenieria.tpi135.2018.mantenimiento</groupId>
+            <artifactId>mantenimientoRemoteLib</artifactId>
+            <version>1.0-SNAPSHOT</version>
+            <scope>compile</scope>
+        </dependency>
+        
+        
         <dependency>
             <groupId>javax</groupId>
             <artifactId>javaee-api</artifactId>
