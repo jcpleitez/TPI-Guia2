@@ -45,13 +45,13 @@ public class TipoResponsableFacadeTest {
         TipoResponsableFacade trf = new TipoResponsableFacade();
         Whitebox.setInternalState(trf, "em", em);
 
-        em.getTransaction().begin();
+        trf.getEntityManager().getTransaction().begin();
 
         boolean test1 = trf.crear(null);
         boolean test2 = trf.crear(tipo1);
         boolean test3 = trf.crear(tipo2);
 
-        em.getTransaction().commit();
+        trf.getEntityManager().getTransaction().commit();
         assertFalse(test1);
         assertTrue(test2);
         assertTrue(test3);
@@ -69,9 +69,9 @@ public class TipoResponsableFacadeTest {
 
         TipoResponsableFacade trf = new TipoResponsableFacade();
         Whitebox.setInternalState(trf, "em", em);
-        em.getTransaction().begin();
+        trf.getEntityManager().getTransaction().begin();
         TipoResponsable t = trf.edit(tr);
-        em.getTransaction().commit();
+        trf.getEntityManager().getTransaction().commit();
         assertEquals(tr, t);
         assertEquals(2, trf.findAll().size());
     }
@@ -87,13 +87,13 @@ public class TipoResponsableFacadeTest {
         TipoResponsableFacade trf = new TipoResponsableFacade();
         Whitebox.setInternalState(trf, "em", em);
 
-        em.getTransaction().begin();
+        trf.getEntityManager().getTransaction().begin();
         boolean test1 = trf.eliminar(tr);
         boolean test2 = trf.eliminar(null);
 
         List<TipoResponsable> findAll = trf.findAll();
 
-        em.getTransaction().commit();
+        trf.getEntityManager().getTransaction().commit();
 
         assertTrue(test1);
         assertFalse(test2);
