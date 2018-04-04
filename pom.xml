@@ -32,7 +32,7 @@
         <!--Dependencia para remote lib-->
         <dependency>
             <groupId>sv.edu.ues.fmocc.ingenieria.tpi135.2018.mantenimiento</groupId>
-            <artifactId>mantenimientoRemoteLib</artifactId>
+            <artifactId>mantenimientoLib</artifactId>
             <version>1.0-SNAPSHOT</version>
             <scope>compile</scope>
         </dependency>

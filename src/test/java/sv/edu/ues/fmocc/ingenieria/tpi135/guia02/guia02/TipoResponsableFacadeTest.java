@@ -9,7 +9,7 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 import org.junit.BeforeClass;
 import org.powermock.reflect.Whitebox;
-import sv.edu.ues.fmocc.ingenieria.tpi135.mantenimiento.mantenimientoremotelib.entity.TipoResponsable;
+import sv.edu.ues.fmocc.ingenieria.tpi135.mantenimiento.mantenimientolib.entity.TipoResponsable;
 
 /**
  *

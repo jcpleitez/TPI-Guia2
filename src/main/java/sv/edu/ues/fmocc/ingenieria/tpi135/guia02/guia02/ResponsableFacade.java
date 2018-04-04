@@ -8,7 +8,7 @@ package sv.edu.ues.fmocc.ingenieria.tpi135.guia02.guia02;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import sv.edu.ues.fmocc.ingenieria.tpi135.mantenimiento.mantenimientoremotelib.entity.Responsable;
+import sv.edu.ues.fmocc.ingenieria.tpi135.mantenimiento.mantenimientolib.entity.Responsable;
 
 /**
  *
