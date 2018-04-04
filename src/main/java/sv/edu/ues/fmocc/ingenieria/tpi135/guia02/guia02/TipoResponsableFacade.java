@@ -28,5 +28,5 @@ public class TipoResponsableFacade extends AbstractFacade<TipoResponsable> imple
     public TipoResponsableFacade() {
         super(TipoResponsable.class);
     }
-    
+   
 }

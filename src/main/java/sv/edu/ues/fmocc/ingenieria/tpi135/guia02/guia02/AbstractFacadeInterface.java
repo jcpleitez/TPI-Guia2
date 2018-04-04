@@ -10,15 +10,22 @@ import java.util.List;
 /**
  *
  * @author ale
+ * @param <T>
  */
 public interface AbstractFacadeInterface <T> {
     
-    void create(T entity);
+    T create(T entity);
 
-    void edit(T entity);
+    T edit(T entity);
 
-    void remove(T entity);
+    T remove(T entity);
 
+    boolean crear (T entity);
+    
+    boolean modificar (T entity);
+    
+    boolean eliminar (T entity);
+    
     T find(Object id);
 
     List<T> findAll();
