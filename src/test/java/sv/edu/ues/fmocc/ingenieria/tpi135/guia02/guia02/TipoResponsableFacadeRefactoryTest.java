@@ -1,21 +1,13 @@
 package sv.edu.ues.fmocc.ingenieria.tpi135.guia02.guia02;
 
-import java.util.List;
-import java.util.regex.Matcher;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
-import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
-import javax.transaction.Transactional;
-import javax.transaction.UserTransaction;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import org.junit.BeforeClass;
-import org.junit.Ignore;
-import org.junit.Rule;
-import org.mockito.Matchers;
 import org.powermock.reflect.Whitebox;
 import sv.edu.ues.fmocc.ingenieria.tpi135.mantenimiento.mantenimientolib.entity.TipoResponsable;
 
@@ -36,10 +28,10 @@ public class TipoResponsableFacadeRefactoryTest {
     }
 
     @Test
-    public void when_creating_null_tipo_responsable_return_false() {
+    public void when_creating_null_tipo_responsable_expect_false() {
         TipoResponsableFacade trf = new TipoResponsableFacade();
         Whitebox.setInternalState(trf, "em", em);
-        em.getTransaction().begin();
+        trf.getEntityManager().getTransaction().begin();
 
         boolean result = trf.crear(null);
 
@@ -48,7 +40,7 @@ public class TipoResponsableFacadeRefactoryTest {
     }
 
     @Test
-    public void when_creating_new_tipo_responsable_return_true() {
+    public void when_creating_new_tipo_responsable_expect_true() {
         TipoResponsable nuevoTipoResponsable = new TipoResponsable();
         nuevoTipoResponsable.setNombreTipoResponsable("Test Tipo Responsable");
         nuevoTipoResponsable.setDetalleTipoResponsable("Algun detalle de prueba");
@@ -57,8 +49,8 @@ public class TipoResponsableFacadeRefactoryTest {
         TipoResponsableFacade trf = new TipoResponsableFacade();
         Whitebox.setInternalState(trf, "em", em);
 
-        em.getTransaction().begin();
-
+        trf.getEntityManager().getTransaction().begin();
+       
         boolean result = trf.crear(nuevoTipoResponsable);
 
         assertTrue(result);
@@ -66,11 +58,11 @@ public class TipoResponsableFacadeRefactoryTest {
     }
 
     @Test
-    public void when_modify_valid_tipo_responsable_return_true() {
+    public void when_modify_valid_tipo_responsable_expect_true() {
         TipoResponsableFacade trf = new TipoResponsableFacade();
         Whitebox.setInternalState(trf, "em", em);
-        em.getTransaction().begin();
-        em.persist(new TipoResponsable(null, "test tipo responsable", true));
+        trf.getEntityManager().getTransaction().begin();
+        trf.getEntityManager().persist(new TipoResponsable(null, "test tipo responsable", true));
 
         TipoResponsable expected = new TipoResponsable(1, "changed tipo responsable", false);
         TipoResponsable modified = new TipoResponsable(1, "changed tipo responsable", false);
@@ -82,21 +74,21 @@ public class TipoResponsableFacadeRefactoryTest {
     }
 
     @Test
-    public void when_delete_null_tipo_responsable_then_return_false() {
+    public void when_delete_null_tipo_responsable_expect_false() {
         TipoResponsableFacade trf = new TipoResponsableFacade();
         Whitebox.setInternalState(trf, "em", em);
-        em.getTransaction().begin();
+        trf.getEntityManager().getTransaction().begin();
         boolean result = trf.eliminar(null);
         assertEquals(0, trf.findAll().size());
         assertFalse(result);
     }
 
     @Test
-    public void when_delete_valid_tipo_responsable_then_return_true() {
+    public void when_delete_valid_tipo_responsable_expect_true() {
         TipoResponsableFacade trf = new TipoResponsableFacade();
         Whitebox.setInternalState(trf, "em", em);
-        em.getTransaction().begin();
-        em.persist(new TipoResponsable(null, "test tipo responsable", true));
+        trf.getEntityManager().getTransaction().begin();
+        trf.getEntityManager().persist(new TipoResponsable(null, "test tipo responsable", true));
         TipoResponsable entity = new TipoResponsable(1);
         boolean result = trf.eliminar(entity);
         assertTrue(result);
